@@ -1,0 +1,101 @@
+/*!
+ Theme Name:   FAU-Blog
+ Theme URI:    https://github.com/RRZE-Webteam/FAU-Blog
+ Description:  WordPress-Theme der Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Child-Theme von FAU-Einrichtungen
+ Author:       RRZE-Webteam <webmaster@fau.de> (https://www.rrze.fau.de)
+ Author URI:   https://www.wordpress.rrze.fau.de
+ Template:     FAU-Einrichtungen
+ Version:      1.0.0
+ License:      GNU General Public License v3 or later
+ License URI:  http://www.gnu.org/licenses/gpl-3.0.html
+ Tags:         three-columns, two-columns, one-column, right-sidebar, responsive-layout, featured-img
+ Text Domain:  fau
+*/
+
+@import "variables";
+@import "mixins";
+@import "colors";
+
+/*
+ * Typography
+ */
+
+html {
+  font-size: unset;
+}
+#content main {
+  @include px2rem($font-size-gridbase);
+}
+.widget {
+  @include px2rem($font-size-sidebar);
+}
+.nav ul a {
+  @include px2rem($font-size-nav);
+}
+.news-item .news-meta {
+  @include px2rem($font-size-sidebar);
+}
+
+/*
+ * Structure
+ */
+
+.container {
+  @media (min-width: $screen-sm-min) {
+    width: 100%;
+  }
+  @media (min-width: $screen-md-min) {
+    width: $container-md;
+  }
+  @media (min-width: $screen-lg-min) {
+    width: $container-lg;
+  }
+}
+.entry-content {
+  @media (min-width: $screen-md-min) {
+    width: 75%;
+  }
+}
+.sidebar-page {
+  @media (min-width: $screen-md-min) {
+    width: 25%;
+    float: left;
+  }
+}
+.sidebar-single {
+  @media (min-width: $screen-md-min) {
+    width: 25%;
+  }
+}
+
+/*
+ * Page
+ */
+.page-template-default {
+  main {
+    @media (min-width: $screen-sm-min) {
+      width: 90%;
+      margin: 0 auto;
+    }
+    @media (min-width: $screen-md-min) {
+      //width: $container-sm;
+      width: 80%;
+    }
+    @media (min-width: $screen-lg-min) {
+      //width: $container-md;
+    }
+  }
+}
+
+/*
+ * Page Sidebar
+ */
+.sidebar-page {
+  padding-left: 15px;
+  padding-right: 15px;
+  h2.widgettitle {
+    &:first-child {
+      padding-top: 0;
+    }
+  }
+}

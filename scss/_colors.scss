@@ -1,0 +1,70 @@
+@each $key, $value in $themeColors {
+  .color-#{$key} {
+    h1, h2, h3, h4, h5, h6,
+    .nav [type="button"], .nav a,
+    #logo .sitetitle, #logo h1, #logo .sitetitle a, #logo h1 a,
+    #content blockquote p, #tinymce blockquote p, #content blockquote:before,
+    .post-meta {
+      color: setStyle($themeColors, $key, colorPrimary)
+    }
+    a {
+      color: setStyle($themeColors, $key, colorPrimary);
+      &:active, &:focus, &:hover {
+        color: setStyle($themeColors, $key, PalettonDunkelste)
+      }
+    }
+
+    #hero.hero-small {
+      background: radial-gradient(ellipse at center, setStyle($themeColors, $key, colorPrimaryHeroLight) 0, setStyle($themeColors, $key, colorPrimaryHero) 100%);
+    }
+    .hero-meta-portal {
+      color: setStyle($themeColors, $key, colorPrimaryHeroLight)
+    }
+    .nav {
+      .nav-flyout {
+        background: setStyle($themeColors, $key, colorPrimary)
+      }
+      .button-portal {
+        background: setStyle($themeColors, $key, PalettonDunkelste);
+        color: #fff;
+        &:focus, &:hover {
+          background: setStyle($themeColors, $key, PalettonDunkler);
+        }
+      }
+      & > li {
+        &.has-sub:hover > a,
+        & > [type="button"]:focus,
+        & > [type="button"]:hover,
+        & > [type="button"][aria-expanded="true"],
+        & > a:focus,
+        & > a:hover {
+          background: setStyle($themeColors, $key, colorPrimary);
+        }
+      }
+      ul a {
+        color: #fff;
+        &:focus, &:hover {
+          background: setStyle($themeColors, $key, PalettonDunkelste);
+        }
+      }
+      .level2 > li > a {
+        border-bottom: 1px solid setStyle($themeColors, $key, PalettonDunkelste);
+      }
+    }
+    .widget_nav_menu ul li {
+      background: setStyle($themeColors, $key, PalettonHellste);
+      li {
+        background-color: darken(setStyle($themeColors, $key, PalettonHellste), 3%);
+        li {
+          background-color: darken(setStyle($themeColors, $key, PalettonHellste), 6%);
+        }
+      }
+      &:focus a, &:hover a {
+        color: setStyle($themeColors, $key, PalettonDunkelste);
+      }
+    }
+    #footer, #footer address, #footer p {
+      background: setStyle($themeColors, $key, colorPrimary);
+    }
+  }
+}
