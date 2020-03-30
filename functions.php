@@ -1,6 +1,7 @@
 <?php
 
-require 'customizer.php';
+require_once( get_stylesheet_directory() . '/customizer.php' );
+require_once( get_stylesheet_directory() . '/widgets.php' );
 /*
  * Enqueue Styles
  */
@@ -24,22 +25,6 @@ function fau_blog_remove_page_templates( $templates ) {
     unset( $templates['page-templates/page-portalindex.php'] );
     unset( $templates['page-templates/page-start.php'] );
     return $templates;
-}
-
-/*
- * Add Page Widget Area
- */
-add_action( 'widgets_init', 'fau_blog_widgets_init' );
-function fau_blog_widgets_init() {
-    register_sidebar( array(
-        'name'          => __( 'Page Sidebar', 'textdomain' ),
-        'id'            => 'sidebar-page',
-        'description'   => __( 'Widgets in this area will be shown on two column pages.', 'fau' ),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h2 class="widgettitle">',
-        'after_title'   => '</h2>',
-    ) );
 }
 
 /*

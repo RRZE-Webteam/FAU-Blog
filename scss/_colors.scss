@@ -13,6 +13,11 @@
         color: setStyle($themeColors, $key, PalettonDunkelste)
       }
     }
+    #logo .sitetitle, #logo h1, #logo .sitetitle a, #logo h1 a {
+      @media (max-width: $screen-xs-max) {
+        color: #fff;
+      }
+    }
 
     #hero.hero-small {
       background: radial-gradient(ellipse at center, setStyle($themeColors, $key, colorPrimaryHeroLight) 0, setStyle($themeColors, $key, colorPrimaryHero) 100%);

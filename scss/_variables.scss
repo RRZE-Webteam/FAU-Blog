@@ -79,8 +79,12 @@ $themeColors: (
 // Extra small screen / phone
 $screen-xs-min:              480px !default;
 
+$screen-xs-sm-min:           624px !default;
+
 // Small screen / tablet
 $screen-sm-min:              768px !default;
+
+$screen-sm-lg-min:           880px !default;
 
 // Medium screen / desktop
 $screen-md-min:              992px !default;
