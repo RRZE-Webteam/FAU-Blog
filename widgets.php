@@ -15,19 +15,19 @@ function fau_blog_widgets_init() {
         'after_title'   => '</h2>',
     ) );
 
-    register_widget("Fau_Blog_Subpages_Menu");
+    register_widget("Fau_Blog_Childpages_Menu");
 }
 
 /*
  * Add Subpages Widget
  */
-class Fau_Blog_Subpages_Menu extends WP_Widget {
+class Fau_Blog_Childpages_Menu extends WP_Widget {
 
     public function __construct() {
         // actual widget processes
         parent::__construct(
             'fau_blog_subpages_menu',  // Base ID
-            'Subpages Menu'   // Name
+            'Child Pages Menu'   // Name
         );
     }
 

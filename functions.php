@@ -2,18 +2,27 @@
 
 require_once( get_stylesheet_directory() . '/customizer.php' );
 require_once( get_stylesheet_directory() . '/widgets.php' );
+
 /*
  * Enqueue Styles
  */
 add_action( 'wp_enqueue_scripts', 'fau_blog_enqueue_styles' );
 function fau_blog_enqueue_styles() {
+    $theme_data = wp_get_theme();
+    $theme_version = $theme_data->Version;
     $parent_style = 'fau-style-css';
     wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
     wp_enqueue_style( 'fau-blog-style-css',
         get_stylesheet_directory_uri() . '/style.css',
         array( $parent_style ),
-        wp_get_theme()->get('Version')
+        $theme_version
     );
+    wp_enqueue_script( 'fau-blog-scripts',
+        get_stylesheet_directory_uri() . '/js/scripts.min.js',
+        array('jquery'),
+        $theme_version,
+        true );
+
 }
 
 /*
