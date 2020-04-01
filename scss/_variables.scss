@@ -23,7 +23,8 @@ $themeColors: (
     PalettonDunkler: #24598f,
     PalettonDunkelste: #1f4b7a,
     colorPrimaryHero : $colorFAU,
-    colorPrimaryHeroLight: lighten($colorFAU, 15%)
+    colorPrimaryHeroLight: lighten($colorFAU, 15%),
+    watermark: 'siegel-zuv-schnitt.png'
   ),
   rw: (
     colorPrimary : $colorRwFak,
@@ -32,7 +33,8 @@ $themeColors: (
     PalettonDunkler: #690013,
     PalettonDunkelste: #42000c,
     colorPrimaryHero : $colorRwFak,
-    colorPrimaryHeroLight: lighten($colorRwFak, 15%)
+    colorPrimaryHeroLight: lighten($colorRwFak, 15%),
+    watermark: 'siegel-zuv-schnitt.png'
   ),
   phil: (
     colorPrimary : $colorPhilFak,
@@ -41,7 +43,8 @@ $themeColors: (
     PalettonDunkler: #805000,
     PalettonDunkelste: #553500,
     colorPrimaryHero : $colorPhilFak,
-    colorPrimaryHeroLight: lighten($colorPhilFak, 15%)
+    colorPrimaryHeroLight: lighten($colorPhilFak, 15%),
+    watermark: 'siegel-philfak-schnitt.png'
   ),
   med: (
     colorPrimary : $colorMedFak,
@@ -50,7 +53,8 @@ $themeColors: (
     PalettonDunkler: #026480,
     PalettonDunkelste: #014e63,
     colorPrimaryHero : $colorMedFak,
-    colorPrimaryHeroLight: lighten($colorMedFak, 15%)
+    colorPrimaryHeroLight: lighten($colorMedFak, 15%),
+    watermark: 'siegel-medfak-schnitt.png'
   ),
   nat: (
     colorPrimary : $colorNatFak,
@@ -59,7 +63,8 @@ $themeColors: (
     PalettonDunkler: #006e53,
     PalettonDunkelste: #00533f,
     colorPrimaryHero : $colorNatFak,
-    colorPrimaryHeroLight: lighten($colorNatFak, 15%)
+    colorPrimaryHeroLight: lighten($colorNatFak, 15%),
+    watermark: 'siegel-natfak-schnitt.png'
   ),
   tf: (
     colorPrimary : $colorTechFak,
@@ -68,7 +73,8 @@ $themeColors: (
     PalettonDunkler: #53606b,
     PalettonDunkelste: #3b4956,
     colorPrimaryHero : $colorTechFak,
-    colorPrimaryHeroLight: lighten($colorTechFak, 15%)
+    colorPrimaryHeroLight: lighten($colorTechFak, 15%),
+    watermark: 'siegel-techfak-schnitt.png'
   )
 );
 

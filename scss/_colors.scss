@@ -13,17 +13,56 @@
         color: setStyle($themeColors, $key, PalettonDunkelste)
       }
     }
+    cite {
+      color: setStyle($themeColors, $key, colorPrimaryHeroLight);
+    }
+    blockquote cite, blockquote small {
+      color: #797676;
+    }
+    table tr:nth-child(2n+1) td {
+      color:setStyle($themeColors, $key, PalettonDunkelste);
+    }
+    input[type="submit"] {
+      background-color: setStyle($themeColors, $key, colorPrimary);
+      border-color: setStyle($themeColors, $key, colorPrimary);
+      &:focus,
+      &:hover {
+        background-color: #fff;
+        color: setStyle($themeColors, $key, colorPrimary);
+      }
+    }
+
     #logo .sitetitle, #logo h1, #logo .sitetitle a, #logo h1 a {
       @media (max-width: $screen-xs-max) {
         color: #fff;
       }
     }
-
+    &:not(.md-showsitelogo) #header {
+      @media (max-width: $screen-xs-max) {
+        background-color: setStyle($themeColors, $key, colorPrimary) !important;
+      }
+    }
+    #hero.hero-banner,
     #hero.hero-small {
-      background: radial-gradient(ellipse at center, setStyle($themeColors, $key, colorPrimaryHeroLight) 0, setStyle($themeColors, $key, colorPrimaryHero) 100%);
+      background-color: setStyle($themeColors, $key, colorPrimary);
+      background: url(img/#{setStyle($themeColors, $key, watermark)}) no-repeat 95% bottom,#036;
+      background: url(img/#{setStyle($themeColors, $key, watermark)}) no-repeat 95% bottom,radial-gradient(ellipse at center, setStyle($themeColors, $key, colorPrimaryHeroLight) 0, setStyle($themeColors, $key, colorPrimaryHero) 100%);
+    }
+    &.no-watermark {
+      #hero.hero-banner,
+      #hero.hero-small {
+        background: radial-gradient(ellipse at center, setStyle($themeColors, $key, colorPrimaryHeroLight) 0, setStyle($themeColors, $key, colorPrimaryHero) 100%);
+      }
     }
     .hero-meta-portal {
       color: setStyle($themeColors, $key, colorPrimaryHeroLight)
+    }
+    .banner .banner-text {
+      h1,
+      p.sitetitle,
+      p.description {
+        background: rgba(setStyle($themeColors, $key, colorPrimary), 0.8);
+      }
     }
     .nav {
       .nav-flyout {
@@ -56,6 +95,26 @@
         border-bottom: 1px solid setStyle($themeColors, $key, PalettonDunkelste);
       }
     }
+    .nav-links a,
+    .nav-links span {
+      background: setStyle($themeColors, $key, colorPrimary);
+      border: 1px solid setStyle($themeColors, $key, colorPrimary);
+      color: #fff;
+      a:hover, a:focus {
+        background: setStyle($themeColors, $key, PalettonDunkler);
+      }
+      .current {
+        border: 1px solid #dfe6ec;
+        color: #fff;
+      }
+    }
+    .pagination.pagebreaks .subpages a .number {
+      background: setStyle($themeColors, $key, colorPrimary);
+      border: 1px solid setStyle($themeColors, $key, colorPrimary);
+    }
+    .news-more-links .news-more {
+      background: setStyle($themeColors, $key, colorPrimary);
+    }
     .widget_nav_menu ul li {
       background: setStyle($themeColors, $key, PalettonHellste);
       li {
@@ -68,8 +127,15 @@
         color: setStyle($themeColors, $key, PalettonDunkelste);
       }
     }
-    #footer, #footer address, #footer p {
+    #footer, #footer address, #footer p, .top-link {
       background: setStyle($themeColors, $key, colorPrimary);
+    }
+    // RRZE-Elements
+    .accordion .accordion-group .accordion-heading .accordion-toggle {
+      border-left-color: setStyle($themeColors, $key, colorPrimary);
+      &:focus, &:hover {
+        background-color: darken(setStyle($themeColors, $key, PalettonHellste), 3%);
+      }
     }
   }
 }
