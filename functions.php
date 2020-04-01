@@ -33,6 +33,7 @@ function fau_blog_remove_page_templates( $templates ) {
     unset( $templates['page-templates/page-portal.php'] );
     unset( $templates['page-templates/page-portalindex.php'] );
     unset( $templates['page-templates/page-start.php'] );
+    unset( $templates['page-templates/page-subnav.php'] );
     return $templates;
 }
 
@@ -41,9 +42,8 @@ function fau_blog_remove_page_templates( $templates ) {
  */
 add_filter( 'body_class', 'fau_blog_body_class' );
 function fau_blog_body_class( $classes ) {
-    $classes[] = 'fauorg-kooperation';
-    $fau_blog_page_sidebar = get_theme_mod('fau_blog_color_scheme');
-    switch ($fau_blog_page_sidebar) {
+    $fau_blog_color_scheme = get_theme_mod('fau_blog_color_scheme');
+    switch ($fau_blog_color_scheme) {
         case 'phil':
             $classes[] = 'color-phil';
             break;
@@ -63,6 +63,9 @@ function fau_blog_body_class( $classes ) {
         default:
             $classes[] = 'color-fau';
             break;
+    }
+    if (get_theme_mod('fau_blog_header_watermark') == 0) {
+        $classes[] = 'no-watermark';
     }
     return $classes;
 }
