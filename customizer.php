@@ -7,13 +7,25 @@
 
 add_action( "customize_register", "fau_blog_customizer_settings", 20 );
 function fau_blog_customizer_settings( $wp_customize ) {
-    // Panel 'Daten zum Webauftritt'
-    $wp_customize->get_setting( 'website_type' )->default = 3;
-    $wp_customize->remove_control("website_type");
-    $wp_customize->remove_setting('website_type');
-    $wp_customize->remove_control("default_faculty_useshorttitle");
-    $wp_customize->remove_setting('default_faculty_useshorttitle');
+    $wp_customize->get_setting( 'website_type' )->default = 2;
     $wp_customize->get_setting( 'startseite_banner_image' )->description = 'Festes Banner für die Startseite';
+    $remove_settings = [
+        'website_type',
+        'default_faculty_useshorttitle',
+        'menu_pretitle_portal',
+        'menu_aftertitle_portal',
+        'advanced_display_portalmenu_thumb_credits'
+    ];
+    foreach ($remove_settings as $setting) {
+        $wp_customize->remove_control($setting);
+        $wp_customize->remove_setting($setting);
+    }
+    $remove_sections = [
+        'slider'
+    ];
+    foreach ($remove_sections as $section) {
+        $wp_customize->remove_section($section);
+    }
 
     $wp_customize->add_setting('fau_blog_color_scheme', array(
         'default'   => 'fau',
@@ -34,4 +46,17 @@ function fau_blog_customizer_settings( $wp_customize ) {
             'tf'    => esc_html__('TechFak', 'fau'),
         ),
     ));
+    $wp_customize->add_setting( 'fau_blog_header_watermark', array(
+            'default' => 1,
+            'transport' => 'refresh',
+            'sanitize_callback' => 'fau_sanitize_customizer_toggle_switch'
+        )
+    );
+    $wp_customize->add_control( new WP_Customize_Control_Toggle_Switch( $wp_customize, 'fau_blog_header_watermark', array(
+            'label' => __('Show Watermark in Hero', 'fau'),
+            'section' => 'webgroup',
+            'priority'  => 3,
+            'description'	=> 'Show FAU Watermark in hero.',
+        )
+    ) );
 }
