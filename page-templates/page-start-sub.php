@@ -18,18 +18,12 @@
     <div id="content">
 	<div class="container">
 	    <div class="row">
-            <aside class="startpage-sidebar" aria-label="<?php echo __('Sidebar','fau');?>">
-                <?php
-
-                get_template_part('template-parts/sidebar');
-                ?>
-            </aside>
-            <?php
-        if ($is_sidebar_active) {
-            echo '<div class="startpage-blogroll with-sidebar">';
-        } else {
-            echo '<div class="startpage-blogroll">';
-        } ?>
+            <?php get_template_part('template-parts/sidebar', 'inline');
+            if ($is_sidebar_active) {
+                echo '<div class="startpage-blogroll with-sidebar">';
+            } else {
+                echo '<div class="startpage-blogroll">';
+            } ?>
 		    <main<?php echo fau_get_page_langcode($post->ID);?> id="droppoint">	  
 			<h1 class="screen-reader-text"><?php the_title(); ?></h1>
 		    <?php 

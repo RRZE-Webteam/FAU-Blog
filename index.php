@@ -23,10 +23,12 @@ if($posttype == 'event') {
 } elseif (($posttype == 'post') && (is_archive())) {
     get_template_part('template-parts/hero', 'category');
     $screenreadertitle = single_cat_title("", false);
-
-} else {
-    get_template_part('template-parts/hero', 'index');
-    $screenreadertitle = __('Index','fau');
+} elseif (is_front_page()) {
+    get_template_part('template-parts/hero', 'banner');
+    $screenreadertitle = __('Startseite','fau');
+} else  {
+    get_template_part('template-parts/hero', 'small');
+    $screenreadertitle = single_post_title('', false);
 }
 ?>
 
