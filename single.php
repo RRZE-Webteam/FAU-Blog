@@ -107,9 +107,9 @@ while ( have_posts() ) : the_post();
 					    }
                         $prev_post = get_previous_post();
 					    $next_post = get_next_post();
-                        $args_post_nav = [
-                            'prev_text' => '<span class="fa fa-angle-double-left"></span> ' . $prev_post->post_title,
-                            'next_text' => $next_post->post_title . ' <span class="fa fa-angle-double-right"></span>',
+					    $args_post_nav = [
+                            'prev_text' => '<span class="fa fa-angle-double-left"></span> ' . ($prev_post != '' ? $prev_post->post_title : ''),
+                            'next_text' => ($next_post != '' ? $next_post->post_title : '') . ' <span class="fa fa-angle-double-right"></span>',
                         ];
                         the_post_navigation($args_post_nav);
 					    ?>
