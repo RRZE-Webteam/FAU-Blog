@@ -9,6 +9,12 @@ add_action( "customize_register", "fau_blog_customizer_settings", 20 );
 function fau_blog_customizer_settings( $wp_customize ) {
     $wp_customize->get_setting( 'website_type' )->default = 2;
     $wp_customize->get_setting( 'startseite_banner_image' )->description = 'Festes Banner für die Startseite';
+    $wp_customize->get_setting( 'contact_address_name' )->default = '';
+    $wp_customize->get_setting( 'contact_address_name2' )->default = '';
+    $wp_customize->get_setting( 'contact_address_street' )->default = '';
+    $wp_customize->get_setting( 'contact_address_plz' )->default = '';
+    $wp_customize->get_setting( 'contact_address_ort' )->default = '';
+    $wp_customize->get_setting( 'contact_address_country' )->default = '';
     $remove_settings = [
         'website_type',
         'default_faculty_useshorttitle',

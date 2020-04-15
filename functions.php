@@ -4,6 +4,29 @@ require_once( get_stylesheet_directory() . '/customizer.php' );
 require_once( get_stylesheet_directory() . '/widgets.php' );
 
 /*
+ * Blog Theme Setup: Overwrite some defaults
+ */
+add_action( 'after_setup_theme', 'fau_blog_setup' );
+function fau_blog_setup()
+{
+    global $default_link_liste;
+    $default_link_liste['techmenu'] = [
+        'link1' => [
+            'name' => __('Nutzungsbedingungen', 'fau'),
+            'content' => 'https://blogs.fau.de/nutzungsbedingungen/',
+        ],
+        'link2' => [
+            'name' => __('Hilfe', 'fau'),
+            'content' => 'https://blogs.fau.de/hilfe',
+        ],
+        'link3' => [
+            'name' => __('Blogübersicht', 'fau'),
+            'content' => 'https://blogs.fau.de/?a=bloguebersicht',
+        ],
+    ];
+}
+
+/*
  * Enqueue Styles
  */
 add_action( 'wp_enqueue_scripts', 'fau_blog_enqueue_styles' );
