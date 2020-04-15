@@ -6,7 +6,7 @@ require_once( get_stylesheet_directory() . '/widgets.php' );
 /*
  * Blog Theme Setup: Overwrite some defaults
  */
-add_action( 'after_setup_theme', 'fau_blog_setup' );
+add_action( 'after_setup_theme', 'fau_blog_setup', 11 );
 function fau_blog_setup()
 {
     global $default_link_liste;
@@ -24,6 +24,16 @@ function fau_blog_setup()
             'content' => 'https://blogs.fau.de/?a=bloguebersicht',
         ],
     ];
+
+    unregister_default_headers(['fau', 'med', 'nat', 'phil', 'rw', 'tf', 'fb-wiso', 'fb-jura']);
+    $default_header_logos = [
+        'blog' => [
+            'url'           => get_stylesheet_directory_uri() .'/img/logo-blogdienst.svg',
+            'thumbnail_url' => get_stylesheet_directory_uri() .'/img/logo-blogdienst.svg',
+            'description'   => 'Blogdienst der Universität Erlangen Nürnberg'
+            ]
+    ];
+    register_default_headers( $default_header_logos );
 }
 
 /*
