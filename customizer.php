@@ -14,7 +14,12 @@ function fau_blog_customizer_settings( $wp_customize ) {
         'default_faculty_useshorttitle',
         'menu_pretitle_portal',
         'menu_aftertitle_portal',
-        'advanced_display_portalmenu_thumb_credits'
+        'advanced_display_portalmenu_thumb_credits',
+        'advanced_activate_synonyms',
+        'advanced_activate_glossary',
+        'advanced_reveal_pages_id',
+        'advanced_activate_page_langcode',
+        'google-site-verification',
     ];
     foreach ($remove_settings as $setting) {
         $wp_customize->remove_control($setting);
