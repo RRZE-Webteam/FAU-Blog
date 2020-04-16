@@ -31,6 +31,13 @@ html {
 .widget {
   @include px2rem($font-size-sidebar);
 }
+.orgalist li.fauhome {
+  padding-right: 0;
+  &:before {
+    content: none;
+    margin: 0;
+  }
+}
 .nav ul a {
   @include px2rem($font-size-nav);
 }
