@@ -70,4 +70,18 @@ function fau_blog_customizer_settings( $wp_customize ) {
             'description'	=> 'Show FAU Watermark in hero.',
         )
     ) );
+
+    $wp_customize->add_setting( 'advanced_display_portalmenu_plainview', array(
+            'default' => 1,
+            'transport' => 'refresh',
+            'sanitize_callback' => 'fau_sanitize_customizer_toggle_switch',
+        )
+    );
+    $wp_customize->add_control( new WP_Customize_Control_Toggle_Switch( $wp_customize, 'advanced_display_portalmenu_plainview', array(
+            'label'   => __( 'Unterpunkte stilfrei', 'fau' ),
+            'description'   => __( 'Die Unterpunkte des Menüs werden ohne Zitat oder Bilder der Portalseite angezeigt.', 'fau' ),
+            'section' => 'topmenulinks',
+            'default' => false,
+        )
+    ) );
 }

@@ -108,6 +108,9 @@
         color: #fff;
       }
     }
+    &.mainnav-plainview .nav ul.level2 > li > a {
+      border-bottom-color: setStyle($themeColors, $key, PalettonDunkler);
+    }
     .pagination.pagebreaks .subpages a .number {
       background: setStyle($themeColors, $key, colorPrimary);
       border: 1px solid setStyle($themeColors, $key, colorPrimary);
