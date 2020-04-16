@@ -25,6 +25,13 @@ function fau_blog_setup()
         ],
     ];
 
+    global $defaultoptions;
+    $defaultoptions['default_rwdimage_src'] = get_stylesheet_directory_uri() . '/img/logo-blogdienst_thumb-480x320.png';
+    $defaultoptions['default_rwdimage_2-1_src'] = get_stylesheet_directory_uri() . '/img/logo-blogdienst_thumb-480x240.png';
+    global $options;
+    $options['default_rwdimage_src'] = get_stylesheet_directory_uri() . '/img/logo-blogdienst_thumb-480x320.png';
+    $options['default_rwdimage_2-1_src'] = get_stylesheet_directory_uri() . '/img/logo-blogdienst_thumb-480x240.png';
+
     unregister_default_headers(['fau', 'med', 'nat', 'phil', 'rw', 'tf', 'fb-wiso', 'fb-jura']);
     $default_header_logos = [
         'blog' => [
