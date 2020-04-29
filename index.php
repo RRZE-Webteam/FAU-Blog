@@ -69,7 +69,7 @@ if($posttype == 'event') {
                                     if (get_theme_mod('fau_blog_blogroll_layout') == 'tiles') {
                                         echo fau_blog_display_news_tiles($post->ID, true);
                                     } else {
-                                        echo fau_display_news_teaser($post->ID);
+                                        echo fau_display_news_teaser($post->ID, true);
                                     }
                                 } else { ?>
 
