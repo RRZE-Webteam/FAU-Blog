@@ -35,7 +35,7 @@ if($posttype == 'event') {
     <div id="content">
         <div class="container">
             <div class="row">
-                <?php if(get_post_type() == 'post') { ?>
+                <?php if(get_post_type() == 'post' && is_active_sidebar('news-sidebar')) { ?>
                 <main class="entry-content" id="droppoint">
                     <?php } else { ?>
                     <main class="col-xs-12" id="droppoint">
@@ -49,6 +49,9 @@ if($posttype == 'event') {
                             echo '<h2>'.__('Glossar','fau')."</h2>\n";
                             echo fau_get_glossar();
                         } else {
+                            if (get_theme_mod('fau_blog_blogroll_layout') == 'tiles') {
+                                echo '<div class="blogroll">';
+                            }
                             $line=0;
                             while ( have_posts() ) {
                                 the_post();
@@ -63,7 +66,11 @@ if($posttype == 'event') {
                                 } elseif ($posttype == 'person')  {
                                     echo FAU_Person_Shortcodes::fau_person(array("id"=> $post->ID, 'format' => 'kompakt', 'showlink' => 0, 'showlist' => 1 ));
                                 } elseif($posttype == 'post') {
-                                    echo fau_display_news_teaser($post->ID,true);
+                                    if (get_theme_mod('fau_blog_blogroll_layout') == 'tiles') {
+                                        echo fau_blog_display_news_tiles($post->ID, true);
+                                    } else {
+                                        echo fau_display_news_teaser($post->ID);
+                                    }
                                 } else { ?>
 
                                     <h2 class="small"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
@@ -87,7 +94,9 @@ if($posttype == 'event') {
                                 }
                             }
 
-
+                            if (get_theme_mod('fau_blog_blogroll_layout') == 'tiles') {
+                                echo '</div>';
+                            }
                             if (($posttype=='glossary') || ($posttype=='person')) { ?>
                                 <nav class="navigation">
                                     <div class="nav-previous"><?php previous_posts_link(__('<span class="meta-nav">&laquo;</span> Vorherige Einträge', 'fau')); ?></div>

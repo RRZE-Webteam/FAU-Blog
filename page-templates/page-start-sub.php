@@ -12,7 +12,6 @@
     get_header();    
     get_template_part('template-parts/hero', 'banner');
 
-
 ?>
 
     <div id="content">
@@ -36,67 +35,80 @@
 			$number = 0;
 			$max = get_theme_mod('start_max_newspertag');
 			$maxall = get_theme_mod('start_max_newscontent');
-			    
-			if ($maxall > 0) {    
+
+			if ($maxall > 0) {
+                if (get_theme_mod('fau_blog_blogroll_layout') == 'tiles') {
+                    echo '<div class="blogroll">';
+                }
 			    
 			    $displayedposts = array();
 			    for($j = 1; $j <= 3; $j++) {
 				    $i = 0;
 				    $thistag = get_theme_mod('start_prefix_tag_newscontent').$j;    
 				    $query = new WP_Query( 'tag='.$thistag );
-
-				     while ($query->have_posts() && ($i<$max) && ($number<$maxall) ) { 
-					$query->the_post(); 
-					echo fau_display_news_teaser($post->ID);
-					$i++;
-					$number++;
-					$displayedposts[] = $post->ID;
+				    while ($query->have_posts() && ($i<$max) && ($number<$maxall) ) {
+                        $query->the_post();
+                        if (get_theme_mod('fau_blog_blogroll_layout') == 'tiles') {
+                            echo fau_blog_display_news_tiles($post->ID, true);
+                        } else {
+                            echo fau_display_news_teaser($post->ID, true);
+                        }
+                        $i++;
+                        $number++;
+                        $displayedposts[] = $post->ID;
 				    }
 				    wp_reset_postdata();
 				    wp_reset_query();
 
 			    }
 			    if (($number==0) || ($number < $maxall)) {
-				$startlinknewscat = get_theme_mod('start_link_news_cat');
-				if ($number < $maxall) {
-				    $num = $maxall - $number;
-				    if ($num <=0 ) {
-					$num=1;
-				    }
-				    
-				    if (isset($startlinknewscat)) {
-					$query = new WP_Query(  array( 'post__not_in' => $displayedposts, 'posts_per_page'  => $num, 'has_password' => false, 'post_type' => 'post', 'cat' => $startlinknewscat ) );
-				    } else {
-					$query = new WP_Query(  array( 'post__not_in' => $displayedposts, 'posts_per_page'  => $num, 'has_password' => false, 'post_type' => 'post'  ) );							    
-				    }
-				} else {
-				     $args = '';
-				    if (isset($startlinknewscat)) {
-					$args = 'cat='.$startlinknewscat;	
-				    }
-				    if (isset($args)) {
-					$args .= '&';
-				    }
+				    $startlinknewscat = get_theme_mod('start_link_news_cat');
+                    if ($number < $maxall) {
+                        $num = $maxall - $number;
+                        if ($num <=0 ) {
+                        $num=1;
+                        }
 
-				    $args .= 'post_type=post&has_password=0&posts_per_page='.get_theme_mod('start_max_newscontent');	
-				    $query = new WP_Query( $args );
-				}
-				while ($query->have_posts() ) { 
-				    $query->the_post(); 
-				    echo fau_display_news_teaser($post->ID);
-				     wp_reset_postdata();
-				}
+                        if (isset($startlinknewscat)) {
+                        $query = new WP_Query(  array( 'post__not_in' => $displayedposts, 'posts_per_page'  => $num, 'has_password' => false, 'post_type' => 'post', 'cat' => $startlinknewscat ) );
+                        } else {
+                        $query = new WP_Query(  array( 'post__not_in' => $displayedposts, 'posts_per_page'  => $num, 'has_password' => false, 'post_type' => 'post'  ) );
+                        }
+                    } else {
+                         $args = '';
+                        if (isset($startlinknewscat)) {
+                        $args = 'cat='.$startlinknewscat;
+                        }
+                        if (isset($args)) {
+                        $args .= '&';
+                        }
+
+                        $args .= 'post_type=post&has_password=0&posts_per_page='.get_theme_mod('start_max_newscontent');
+                        $query = new WP_Query( $args );
+                    }
+                    while ($query->have_posts() ) {
+                        $query->the_post();
+                        if (get_theme_mod('fau_blog_blogroll_layout') == 'tiles') {
+                            echo fau_blog_display_news_tiles($post->ID, true);
+                        } else {
+                            echo fau_display_news_teaser($post->ID, true);
+                        }
+                        wp_reset_postdata();
+                    }
 			    }
+                if (get_theme_mod('fau_blog_blogroll_layout') == 'tiles') {
+                    echo '</div>';
+                }
 
 			    if (get_theme_mod('start_link_news_show')) {
-				echo fau_get_category_links();
+				    echo fau_get_category_links();
 			    }
 			}
 
 			?>
-			</main>	
-		    </div>
+			</main>
         </div>
+    </div>
 		<?php  
 
 
