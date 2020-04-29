@@ -84,4 +84,19 @@ function fau_blog_customizer_settings( $wp_customize ) {
             'default' => false,
         )
     ) );
+    $wp_customize->add_setting('fau_blog_blogroll_layout', array(
+        'default'   => 'defauls',
+        'transport' => 'refresh'
+    ));
+    $wp_customize->add_control('fau_blog_blogroll_layout', array(
+        'label'     => esc_html__('Bloglayout', 'fau'),
+        'section'   => 'postoptions',
+        'priority'  => 0,
+        'settings'  => 'fau_blog_blogroll_layout',
+        'type'      => 'select',
+        'choices'   => array(
+            'default'   => esc_html__('Standard', 'fau'),
+            'tiles'  => esc_html__('Kacheln', 'fau'),
+        ),
+    ));
 }

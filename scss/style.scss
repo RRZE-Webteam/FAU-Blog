@@ -5,7 +5,7 @@
  Author:       RRZE-Webteam <webmaster@fau.de> (https://www.rrze.fau.de)
  Author URI:   https://www.wordpress.rrze.fau.de
  Template:     FAU-Einrichtungen
- Version:      1.1.0
+ Version:      1.2.0
  License:      GNU General Public License v3 or later
  License URI:  http://www.gnu.org/licenses/gpl-3.0.html
  Tags:         three-columns, two-columns, one-column, right-sidebar, responsive-layout, featured-img
@@ -253,6 +253,99 @@ body:not(.page-template-two-columns) {
 
       ul ul ul ul a {
         padding-left: 70px;
+      }
+    }
+  }
+}
+
+/* Blogroll Tiles */
+.blogroll-tiles {
+  .blogroll {
+    @media (min-width: $screen-xs-min) {
+      //width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -5px;
+    }
+    @media (min-width: $screen-sm-min) {
+      margin: 0 -10px;
+    }
+    @media (min-width: $screen-lg-min) {
+      margin: 0 -15px;
+    }
+  }
+  .news-item {
+    border-bottom: 1px solid $colorContentBorders;
+    margin-bottom: 20px;
+    @media (min-width: $screen-xs-min) {
+      flex: 1 0 47%;
+      margin: 0 5px 20px;
+      &:hover {
+        box-shadow: #0a0a0d;
+      }
+    }
+    @media (min-width: $screen-sm-min) {
+      flex: 1 0 30%;
+      margin: 0 10px 20px;
+    }
+    @media (min-width: $screen-lg-min) {
+      margin: 0 15px 20px;
+      }
+  }
+  //.col-xs-12 .news-item  {
+  //  @media (min-width: $screen-lg-min) {
+  //    flex: 1 0 22%;
+  //  }
+  //}
+  .news-image {
+    padding: 0;
+    width: 100%;
+    @media (min-width: $screen-xs-min) {
+      max-height: 150px;
+    }
+    img {
+      @media (min-width: $screen-xs-min) {
+        height: 150px;
+        object-fit: cover;
+        max-height: none;
+        width: 100%;
+      }
+    }
+  }
+  .news-meta {
+    margin-bottom: 0;
+    .news-meta-date {
+      margin-left: 0;
+      margin-right: 5px;
+
+      &:before {
+        content: '';
+        display: none;
+      }
+    }
+    .news-meta-categories {
+      display: inline;
+      margin-left: 5px;
+
+      &:before {
+        content: '';
+        display: none;
+      }
+    }
+  }
+  h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+    @include px2rem(24);
+  }
+  .thumbnailregion {
+    display: block;
+    float: none;
+    width: 100%;
+    margin: 0;
+    .passpartout {
+      @media (min-width: $screen-sm-min) {
+        width: 100%;
       }
     }
   }
