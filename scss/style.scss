@@ -114,6 +114,9 @@ body:not(.page-template-two-columns) {
     }
   }
 }
+.startpage-blogroll {
+  width: 100%;
+}
 
 .sidebar-page {
   width: 100%;
@@ -280,9 +283,6 @@ body:not(.page-template-two-columns) {
     @media (min-width: $screen-xs-min) {
       flex: 1 0 47%;
       margin: 0 5px 20px;
-      &:hover {
-        box-shadow: #0a0a0d;
-      }
     }
     @media (min-width: $screen-sm-min) {
       flex: 1 0 30%;
@@ -290,7 +290,12 @@ body:not(.page-template-two-columns) {
     }
     @media (min-width: $screen-lg-min) {
       margin: 0 15px 20px;
-      }
+    }
+  }
+  .startpage-blogroll .blogroll .news-item {
+    @media (min-width: $screen-lg-min) {
+      flex: 1 0 29%;
+    }
   }
   //.col-xs-12 .news-item  {
   //  @media (min-width: $screen-lg-min) {

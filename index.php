@@ -67,7 +67,7 @@ if($posttype == 'event') {
                                     echo FAU_Person_Shortcodes::fau_person(array("id"=> $post->ID, 'format' => 'kompakt', 'showlink' => 0, 'showlist' => 1 ));
                                 } elseif($posttype == 'post') {
                                     if (get_theme_mod('fau_blog_blogroll_layout') == 'tiles') {
-                                        echo fau_blog_display_news_tile($post->ID, true);
+                                        echo fau_blog_display_news_tiles($post->ID, true);
                                     } else {
                                         echo fau_display_news_teaser($post->ID);
                                     }

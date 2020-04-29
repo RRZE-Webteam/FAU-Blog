@@ -209,7 +209,7 @@ function fau_blog_get_toplinks($args = array()) {
     return $result;
 }
 
-function fau_blog_display_news_tile($id = 0, $withdate = false, $hstart = 2, $hidemeta = false) {
+function fau_blog_display_news_tiles($id = 0, $withdate = false, $hstart = 2, $hidemeta = false) {
     if ($id == 0) return;
     $post = get_post($id);
     $output = '';
