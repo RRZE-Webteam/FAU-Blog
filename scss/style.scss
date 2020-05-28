@@ -5,7 +5,7 @@
  Author:       RRZE-Webteam <webmaster@fau.de> (https://www.rrze.fau.de)
  Author URI:   https://www.wordpress.rrze.fau.de
  Template:     FAU-Einrichtungen
- Version:      1.2.0
+ Version:      1.2.1
  License:      GNU General Public License v3 or later
  License URI:  http://www.gnu.org/licenses/gpl-3.0.html
  Tags:         three-columns, two-columns, one-column, right-sidebar, responsive-layout, featured-img
@@ -49,7 +49,7 @@ html {
   word-wrap: break-word;
 }
 
-.nav-links {
+.post-navigation .nav-links {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -70,6 +70,10 @@ html {
       }
     }
   }
+}
+
+.paging-navigation {
+  text-align: center;
 }
 
 .startpage-sidebar .widget h2:first-child {
@@ -149,6 +153,9 @@ body:not(.page-template-two-columns) {
   }
 }
 
+.meta-footer {
+  margin-top: 1.5em;
+}
 /*
  * Page Sidebar
  */
