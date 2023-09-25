@@ -1,0 +1,12 @@
+#footer .footer-logo .fau-logo-footer {
+    fill: var(--color-footer-text);
+    color: var(--color-footer-text);
+}
+
+.svg-socialmedia.round a:before {
+    border-color: var(--color-footer-text);
+}
+
+.svg-socialmedia a[href*="facebook.com"]:before {
+    fill: var(--color-footer-text) !important;
+}

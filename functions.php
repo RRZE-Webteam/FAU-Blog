@@ -1,12 +1,12 @@
 <?php
 
 require_once( get_stylesheet_directory() . '/customizer.php' );
-require_once( get_stylesheet_directory() . '/widgets.php' );
+//require_once( get_stylesheet_directory() . '/widgets.php' );
 
 /*
  * Blog Theme Setup: Overwrite some defaults
  */
-add_action( 'after_setup_theme', 'fau_blog_setup', 11 );
+//add_action( 'after_setup_theme', 'fau_blog_setup', 11 );
 function fau_blog_setup()
 {
     global $default_link_liste;
@@ -57,12 +57,20 @@ function fau_blog_enqueue_styles() {
         array( $parent_style ),
         $theme_version
     );
-    wp_enqueue_script( 'fau-blog-scripts',
+    $colorSet = get_theme_mod('fau_blog_color_scheme');
+    if (empty($colorSet)) {
+        $colorSet = 'fau';
+    }
+    wp_enqueue_style( 'fau-blog-color-css',
+        get_stylesheet_directory_uri() . '/colors-' . $colorSet . '.css',
+        array( $parent_style ),
+        $theme_version
+    );
+    /*wp_enqueue_script( 'fau-blog-scripts',
         get_stylesheet_directory_uri() . '/js/scripts.min.js',
         array('jquery'),
         $theme_version,
-        true );
-
+        true );*/
 }
 
 /*
@@ -72,8 +80,9 @@ add_filter( 'theme_page_templates', 'fau_blog_remove_page_templates' );
 function fau_blog_remove_page_templates( $templates ) {
     unset( $templates['page-templates/page-portal.php'] );
     unset( $templates['page-templates/page-portalindex.php'] );
-    unset( $templates['page-templates/page-start.php'] );
-    unset( $templates['page-templates/page-subnav.php'] );
+    //unset( $templates['page-templates/page-start.php'] );
+    unset( $templates['page-templates/scroll-stories.php'] );
+    //unset( $templates['page-templates/page-subnav.php'] );
     return $templates;
 }
 
@@ -104,9 +113,9 @@ function fau_blog_body_class( $classes ) {
             $classes[] = 'color-fau';
             break;
     }
-    if (get_theme_mod('fau_blog_header_watermark') == 0) {
+    /*if (get_theme_mod('fau_blog_header_watermark') == 0) {
         $classes[] = 'no-watermark';
-    }
+    }*/
     if (get_theme_mod('fau_blog_blogroll_layout') == 'tiles') {
         $classes[] = 'blogroll-tiles';
     }

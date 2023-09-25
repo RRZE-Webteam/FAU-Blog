@@ -28,8 +28,8 @@ function fau_blog_customizer_settings( $wp_customize ) {
         'google-site-verification',
     ];
     foreach ($remove_settings as $setting) {
-        $wp_customize->remove_control($setting);
-        $wp_customize->remove_setting($setting);
+       // $wp_customize->remove_control($setting);
+       // $wp_customize->remove_setting($setting);
     }
     $remove_sections = [
         'slider'
@@ -44,8 +44,8 @@ function fau_blog_customizer_settings( $wp_customize ) {
     ));
     $wp_customize->add_control('fau_blog_color_scheme', array(
         'label'     => esc_html__('Farbschema', 'fau'),
-        'section'   => 'webgroup',
-        'priority'  => 2,
+        'section'   => 'title_tagline',
+        'priority'  => 10,
         'settings'  => 'fau_blog_color_scheme',
         'type'      => 'select',
         'choices'   => array(
@@ -85,7 +85,7 @@ function fau_blog_customizer_settings( $wp_customize ) {
         )
     ) );
     $wp_customize->add_setting('fau_blog_blogroll_layout', array(
-        'default'   => 'defauls',
+        'default'   => 'default',
         'transport' => 'refresh'
     ));
     $wp_customize->add_control('fau_blog_blogroll_layout', array(
