@@ -1,0 +1,125 @@
+@import "variables";
+@import "../../../FAU-Einrichtungen/src/sass/mixins/mixins";
+@import "custom-properties";
+@import "additionalColorStyles";
+
+.thumbnailregion.fallback,
+.news-item .teaser-row .thumbnailregion.fallback {
+    background-color: var(--color-StandardHellgrau);
+    display: block;
+    padding: 0 47px;
+    @media (min-width: $screen-sm-min) {
+        padding: 0 47px;
+    }
+}
+
+/* Blogroll Tiles */
+.blogroll-tiles {
+    .blogroll {
+        @media (min-width: $screen-xs-min) {
+            //width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -5px;
+        }
+        @media (min-width: $screen-sm-min) {
+            margin: 0 -10px;
+        }
+        @media (min-width: $screen-lg-min) {
+            margin: 0 -15px;
+        }
+        .news-item {
+            border-bottom: 1px solid map-get($colormap-misc, "ContentBorders");
+            margin-bottom: 20px;
+            @media (min-width: $screen-xs-min) {
+                flex: 1 0 47%;
+                margin: 0 5px 20px;
+            }
+            @media (min-width: $screen-sm-min) {
+                flex: 1 0 30%;
+                margin: 0 10px 20px;
+            }
+            @media (min-width: $screen-lg-min) {
+                margin: 0 15px 20px;
+            }
+        }
+        .startpage-blogroll .blogroll .news-item {
+            @media (min-width: $screen-lg-min) {
+                flex: 1 0 29%;
+            }
+        }
+        //.col-xs-12 .news-item  {
+        //  @media (min-width: $screen-lg-min) {
+        //    flex: 1 0 22%;
+        //  }
+        //}
+        .thumbnailregion {
+            display: block;
+            float: none;
+            width: 100%;
+            margin: 0;
+            .passpartout {
+                @media (min-width: $screen-sm-min) {
+                    width: 100%;
+                }
+            }
+        }
+        .news-image {
+            padding: 0;
+            width: 100%;
+            img {
+                @media (min-width: $screen-xs-min) {
+                    height: 160px;
+                    object-fit: cover;
+                    max-height: none;
+                    max-width: none;
+                    width: 100%;
+                }
+            }
+        }
+        .news-meta {
+            margin-bottom: 0;
+            font-size: px2rem(14);
+            .news-meta-date {
+                margin-left: 0;
+                margin-right: 5px;
+
+                &:before {
+                    //content: '';
+                    //display: none;
+                }
+            }
+            .news-meta-categories {
+                display: inline;
+                margin-left: 5px;
+
+                &:before {
+                    //content: '';
+                    //display: none;
+                }
+            }
+        }
+        h1 {
+            margin-top: 0;
+            margin-bottom: 0;
+            @include px2rem(24);
+        }
+    }
+}
+
+// Gutenberg Blocks
+
+.wp-block-button__link {
+    .wp-block-button & {
+        @include defaultlinkstyle();
+        @include buttonstyle();
+        border-radius: var(--border-radius-buttons, 3px);
+    }
+    .wp-block-button.is-style-outline & {
+        @include ghostbutton();
+        border-radius: var(--border-radius-buttons, 3px);
+    }
+    .wp-block-button.is-style-squared & {
+        border-radius: 0;
+    }
+}

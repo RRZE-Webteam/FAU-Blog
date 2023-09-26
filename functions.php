@@ -62,15 +62,10 @@ function fau_blog_enqueue_styles() {
         $colorSet = 'fau';
     }
     wp_enqueue_style( 'fau-blog-color-css',
-        get_stylesheet_directory_uri() . '/colors-' . $colorSet . '.css',
+        get_stylesheet_directory_uri() . '/style-' . $colorSet . '.css',
         array( $parent_style ),
         $theme_version
     );
-    /*wp_enqueue_script( 'fau-blog-scripts',
-        get_stylesheet_directory_uri() . '/js/scripts.min.js',
-        array('jquery'),
-        $theme_version,
-        true );*/
 }
 
 /*
@@ -230,20 +225,20 @@ function fau_blog_display_news_tiles($id = 0, $withdate = false, $hstart = 2, $h
     $show_thumbs = get_theme_mod('default_postthumb_always');
 
     if ((has_post_thumbnail( $post->ID )) || ($show_thumbs==true))  {
-
-        $output .= '<div class="thumbnailregion">';
-        $output .= '<div aria-hidden="true" role="presentation" class="passpartout" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">';
-        $output .= '<a href="'.$link.'" tabindex="-1" class="news-image">';
-
-        $size =  'rwd-480-3-2';
         $post_thumbnail_id = get_post_thumbnail_id( $post->ID);
         $pretitle = get_theme_mod('advanced_blogroll_thumblink_alt_pretitle');
         $posttitle = get_theme_mod('advanced_blogroll_thumblink_alt_posttitle');
         $alttext = $pretitle.get_the_title($post->ID).$posttitle;
         $alttext = esc_html($alttext);
-
         $imagehtml = fau_get_image_htmlcode($post_thumbnail_id,'rwd-480-3-2',$alttext,'',array('itemprop' => 'thumbnailUrl'));
-        if (fau_empty($imagehtml)) {
+        $useFallbackImage = fau_empty($imagehtml);
+
+        $output .= '<div class="thumbnailregion' . ($useFallbackImage ? ' fallback' : '') . '">';
+        $output .= '<div aria-hidden="true" role="presentation" class="passpartout" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">';
+        $output .= '<a href="'.$link.'" tabindex="-1" class="news-image">';
+
+        $size =  'rwd-480-3-2';
+        if ($useFallbackImage) {
             $imagehtml = fau_get_image_fallback_htmlcode('post-thumb',$alttext,'',array('itemprop' => 'thumbnailUrl'));
         }
 
@@ -254,8 +249,8 @@ function fau_blog_display_news_tiles($id = 0, $withdate = false, $hstart = 2, $h
             $output .= '<meta itemprop="url" content="'.fau_make_absolute_url($imgmeta[0]).'">';
         }
         global $defaultoptions;
-        $output .= '<meta itemprop="width" content="'.$defaultoptions['default_rwdimage_width'].'">';
-        $output .= '<meta itemprop="height" content="'.$defaultoptions['default_rwdimage_height'].'">';
+        //$output .= '<meta itemprop="width" content="'.$defaultoptions['default_rwdimage_width'].'">';
+        //$output .= '<meta itemprop="height" content="'.$defaultoptions['default_rwdimage_height'].'">';
         $output .= '</div>';
         $output .= '</div>';
         //$output .= '<div class="teaserregion">';

@@ -17,19 +17,16 @@ function fau_blog_customizer_settings( $wp_customize ) {
     $wp_customize->get_setting( 'contact_address_country' )->default = '';
     $remove_settings = [
         'website_type',
-        'default_faculty_useshorttitle',
-        'menu_pretitle_portal',
-        'menu_aftertitle_portal',
-        'advanced_display_portalmenu_thumb_credits',
-        'advanced_activate_synonyms',
-        'advanced_activate_glossary',
-        'advanced_reveal_pages_id',
-        'advanced_activate_page_langcode',
+        //'menu_pretitle_portal',
+        //'menu_aftertitle_portal',
+        //'advanced_reveal_pages_id',
+        //'advanced_activate_page_langcode',
         'google-site-verification',
+        'advanced_header_template',
     ];
     foreach ($remove_settings as $setting) {
-       // $wp_customize->remove_control($setting);
-       // $wp_customize->remove_setting($setting);
+        $wp_customize->remove_control($setting);
+        $wp_customize->remove_setting($setting);
     }
     $remove_sections = [
         'slider'
@@ -57,33 +54,6 @@ function fau_blog_customizer_settings( $wp_customize ) {
             'tf'    => esc_html__('TechFak', 'fau'),
         ),
     ));
-    $wp_customize->add_setting( 'fau_blog_header_watermark', array(
-            'default' => 1,
-            'transport' => 'refresh',
-            'sanitize_callback' => 'fau_sanitize_customizer_toggle_switch'
-        )
-    );
-    $wp_customize->add_control( new WP_Customize_Control_Toggle_Switch( $wp_customize, 'fau_blog_header_watermark', array(
-            'label' => __('Show Watermark in Hero', 'fau'),
-            'section' => 'webgroup',
-            'priority'  => 3,
-            'description'	=> 'Show FAU Watermark in hero.',
-        )
-    ) );
-
-    $wp_customize->add_setting( 'advanced_display_portalmenu_plainview', array(
-            'default' => 1,
-            'transport' => 'refresh',
-            'sanitize_callback' => 'fau_sanitize_customizer_toggle_switch',
-        )
-    );
-    $wp_customize->add_control( new WP_Customize_Control_Toggle_Switch( $wp_customize, 'advanced_display_portalmenu_plainview', array(
-            'label'   => __( 'Unterpunkte stilfrei', 'fau' ),
-            'description'   => __( 'Die Unterpunkte des Menüs werden ohne Zitat oder Bilder der Portalseite angezeigt.', 'fau' ),
-            'section' => 'topmenulinks',
-            'default' => false,
-        )
-    ) );
     $wp_customize->add_setting('fau_blog_blogroll_layout', array(
         'default'   => 'default',
         'transport' => 'refresh'

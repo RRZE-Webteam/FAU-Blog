@@ -169,3 +169,26 @@ $svg-icon-size: 1.4rem;
 $svg-icon-color: $color_button_text;
 $svg-icon-color_hover: $color-button-hover-text;
 $socialmedia_icon_size: 1.8rem;
+
+// Breakpoints
+$screen-xs:                  480px;
+$screen-xs-min:              $screen-xs;
+
+$screen-sm:                  768px;
+$screen-sm-min:              $screen-sm;
+
+$screen-md:                  992px;
+$screen-md-min:              $screen-md;
+
+$screen-lg:                  1200px;
+$screen-lg-min:              $screen-lg;
+
+$screen-xl: 1400px;
+$screen-xxl: 1760px;
+$screen-xxs: 320px;
+
+// Font sizes
+$font-size-gridbase: 16;
+$font-size-base: 16;
+
+$font-size-textbuttons: ($font-size-base - 1);
