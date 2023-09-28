@@ -29,7 +29,9 @@ function fau_blog_customizer_settings( $wp_customize ) {
         $wp_customize->remove_setting($setting);
     }
     $remove_sections = [
-        'slider'
+        'slider',
+        'contentmenus',
+        'portalmenus',
     ];
     foreach ($remove_sections as $section) {
         $wp_customize->remove_section($section);
