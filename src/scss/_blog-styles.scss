@@ -34,13 +34,16 @@
             @media (min-width: $screen-xs-min) {
                 flex: 1 0 47%;
                 margin: 0 5px 20px;
+                padding-bottom: 15px;
             }
             @media (min-width: $screen-sm-min) {
                 flex: 1 0 30%;
                 margin: 0 10px 20px;
+                padding-bottom: 15px;
             }
             @media (min-width: $screen-lg-min) {
                 margin: 0 15px 20px;
+                padding-bottom: 15px;
             }
         }
         .startpage-blogroll .blogroll .news-item {
@@ -78,8 +81,10 @@
             }
         }
         .news-meta {
-            margin-bottom: 0;
             font-size: px2rem(14);
+            display: inline-block;
+            margin-top: 0;
+            margin-bottom: 5px;
             .news-meta-date {
                 margin-left: 0;
                 margin-right: 5px;
